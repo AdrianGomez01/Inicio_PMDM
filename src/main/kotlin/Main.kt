@@ -1,3 +1,5 @@
+import java.lang.Exception
+
 fun main(args: Array<String>) {
     //println("Hello World!")
 
@@ -54,16 +56,84 @@ fun main(args: Array<String>) {
 //    val intMutableList: MutableList<Int> = mutableListOf()
 
     //Reto, crear una mutable list de enteros y llenar otra mutable list de strings con la primera
-    val intMutableListReto: MutableList<Int> = mutableListOf()
+//    val intMutableListReto: MutableList<Int> = mutableListOf()
+//
+//    //Con Step cogemos solo los pares
+//    for (i in 0..100 step 2) {
+//        intMutableListReto.add(0, i)
+//    }
+//    print("Los numeros son:")
+//    intMutableListReto.forEach { i ->
+//        print("$i, ")
+//    }
+//
+//    //Filtro para los numeros pares con .filter
+//    val pares = intMutableListReto.filter { x ->
+//        x % 2 == 0;
+//    }
+//
+//    print("Los numeros son:")
+//    pares.forEach { i ->
+//        print("$i, ")
+//    }
+//
+//    val nombres : List<String> = pares.map { i ->
+//        "pepe${2*i}"
+//    }
+//    println()
+//    print("Los numeros son:")
+//    nombres.forEach { i ->
+//        print("$i, ")
+//    }
 
-    //Con Step cogemos solo los pares
-    for (i in 0..100 step 2) {
-        intMutableListReto.add(0, i)
-    }
-    print("Los numeros son:")
-    intMutableListReto.forEach { i ->
-        print("$i, ")
-    }
+    //ejercicioBasico1()
 
+    ejercicioBasico2()
+}
+
+fun ejercicioBasico1() {
+
+    var numLimite: Int? = null
+    do {
+        println("Introduce un numero:")
+        try {
+            numLimite = readln().toInt()
+        } catch (e: Exception) {
+            println("Error, introduzca un valor numérico")
+        }
+    } while (numLimite == null || numLimite < 1)
+
+    for (i in 1..numLimite) {
+        when {
+            (i % 3 == 0 && i % 5 == 0) -> println("PIM PAM")
+            (i % 3 == 0) -> println("PIM")
+            (i % 5 == 0) -> println("PAM")
+            else -> print("$i ")
+        }
+    }
+}
+
+fun ejercicioBasico2() {
+    var num: Int? = null
+    val listaOriginal: MutableList<Int> = mutableListOf()
+    val listaOrdenada: MutableList<Int> = mutableListOf()
+    print("Introduce los números que desees añadir a la lista. Pulse 0 para salir \n")
+    do {
+        println("Introduce un numero:")
+        try {
+            num = readln().toInt()
+            if (num != 0) {
+                listaOriginal.add(num)
+            }
+        } catch (e: Exception) {
+            println("Error, introduzca un valor numérico entero")
+        }
+    } while (num != 0)
+
+    listaOrdenada.addAll(listaOriginal)
+    listaOrdenada.sort()
+
+    println("Lista Original: $listaOriginal")
+    println("Lista Ordenada: $listaOrdenada")
 
 }
