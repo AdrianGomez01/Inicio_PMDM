@@ -88,7 +88,47 @@ fun main(args: Array<String>) {
 
     //ejercicioBasico1()
 
-    ejercicioBasico2()
+    //ejercicioBasico2()
+
+    carObjects()
+
+    //personObjects()
+
+}
+
+fun personObjects(){
+
+    val designer1 = Designer("Paco", 20)
+    println(designer1)
+    designer1.introducePerson()
+
+    val programmer1 = Programmer("Juan", 28, ProgrammingLang.KOTLIN)
+    programmer1.introducePerson()
+
+    programmer1.showPrograms()
+
+    programmer1.createProgram("Calculadora")
+    programmer1.createProgram("Pokemon GO")
+    programmer1.createProgram("Noticias")
+
+    programmer1.showPrograms()
+
+
+}
+
+fun carObjects(){
+    val myEngine = Car.Engine(2000)
+
+    val myCar = Car("Seat")
+    val myCar2 = Car("Seat", "600", 1955, myEngine)
+
+    val myInsurance = myCar2.Insurance(InsuranceCarrier.MAPFRE, 340.5f)
+
+    //println("El precio del seguro de mi ${myCar2.brand + " " + myCar2.model} es ${myInsurance.amount}")
+    println(myInsurance.amountString)
+
+    myCar2.navigate("Albufeira")
+    myCar2.place()
 }
 
 fun ejercicioBasico1() {
